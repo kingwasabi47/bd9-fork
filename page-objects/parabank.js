@@ -29,6 +29,11 @@ module.exports = {
         forgotLoginInfo: '//*[@id="loginPanel"]/p[1]/a',
         findMyLoginInfo: '//*[@id="lookupForm"]/table/tbody/tr[8]/td[2]/input',
         customerLookUp: '//*[@id="rightPanel"]/h1',
+        userNameForCustomerLogin: '//*[@id="loginPanel"]/form/div[1]/input',
+        passwordForCustomerLogin: '//*[@id="loginPanel"]/form/div[2]/input',
+        customerLogin: '//*[@id="leftPanel"]/h2',
+        loginInButton:'//*[@id="loginPanel"]/form/div[3]/input',
+        findMyLoginInfoButton:'//*[@id="lookupForm"]/table/tbody/tr[8]/td[2]/input',
     },
 
     checkForText: async function (text) {

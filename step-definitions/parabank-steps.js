@@ -30,6 +30,39 @@ module.exports = function () {
     return;
   });
 
+  this.When("I click on Register Button", function () {
+    return page.parabank.clickElement("registerButton");
+  });
+
+  this.Given("I am on the Parabank Portal Customer Login", function () {
+    return helpers.loadPage(page.parabank.url);
+  });
+
+  this.Then("I should see Customer Login", function () {
+    return page.parabank.checkForText("Customer Login");
+  });
+
+  this.Given("I should submit the following user information", async function (dataTable) {
+    const data = dataTable.raw();
+    var headings = data[0]; //headings is the 0th row
+    for (let i = 1; i < data.length; i = i + 1) {
+      var row = data[i]; //i is the row number
+      for (let u = 0; u < row.length; u = u + 1) {
+        var generic = data[i][u]; //u is the column number
+        var xPath = headings[u]; //gets each column of 0th row (headings:firstName,lastName,etc)
+        console.log (xPath, generic);
+        page.parabank.inputValueAtName(xPath, generic);
+      
+      }
+    }
+    await driver.sleep(5000);
+    return;
+  });
+
+  this.When("I click on Login In", function () {
+    return page.parabank.clickElement("loginInButton");
+  });
+
   this.Given("I am on the Parabank Portal Forgot Login", function () {
     return helpers.loadPage(page.parabank.url);
   });
@@ -59,5 +92,7 @@ module.exports = function () {
     return;
   });
 
-  
+  this.When("I click on Find My Login Info", function () {
+    return page.parabank.clickElement("findMyLoginInfoButton");
+  });
 };
